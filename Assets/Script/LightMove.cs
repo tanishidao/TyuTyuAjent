@@ -5,6 +5,7 @@ using UnityEngine;
 public class LightMove : MonoBehaviour
 {
     private float ChangeTime;
+    public float RevealTime = 3f;
     private bool ChangeRoate = true;
     public GameObject Light;
 
@@ -17,7 +18,7 @@ public class LightMove : MonoBehaviour
     void Update()
     {
         ChangeTime += Time.deltaTime;
-        if (ChangeTime > 3f&& ChangeRoate == true)
+        if (ChangeTime >RevealTime&& ChangeRoate == true)
         {
             Light.transform.position += new Vector3(6, 0, 0);
             Light.transform.Rotate(new Vector3(0, 180, 0));
@@ -25,7 +26,7 @@ public class LightMove : MonoBehaviour
             ChangeTime = 0;
             
         }
-        if(ChangeTime > 3f && ChangeRoate == false)
+        if(ChangeTime > RevealTime && ChangeRoate == false)
         {
             Light.transform.position -= new Vector3(6, 0, 0);
             Light.transform.Rotate((new Vector3(0, -180, 0)));
