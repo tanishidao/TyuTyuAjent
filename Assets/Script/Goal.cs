@@ -5,20 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
+    public string  SceneName;
 
+    private float WaitTime;
 
+    List<GameObject> colList = new List<GameObject>();
     // Update is called once per frame
     void Update()
     {
-
+        if(colList.Count > 1)
+        {
+           
+            Debug.Log("‚Å‚«‚½‚©‚à");
+            WaitTime  += Time.deltaTime;
+            if(WaitTime > 1f)
+            {
+                SceneManager.LoadScene(SceneName);
+            }
+            
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+  
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(gameObject.CompareTag("Player1") && gameObject.CompareTag("Player2"))
-        {
-            SceneManager.LoadScene("SecondStage");
-        }
-
+       
+        colList.Add(other.gameObject);
+        Debug.Log("11111‚Å‚«‚½‚©‚à");
     }
 }
